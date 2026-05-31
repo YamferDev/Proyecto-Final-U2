@@ -21,6 +21,7 @@ public class CiudadanoController {
     @FXML private TextField txtNombre;
     @FXML private TextField txtDni;
     @FXML private TextField txtTelefono;
+    @FXML private TextField txtCorreo;
     @FXML private TextField txtDireccion;
     @FXML private ComboBox<Genero> cbxGenero;
     
@@ -43,6 +44,7 @@ public class CiudadanoController {
         columns.put("Nombre", new ColumnInfo("nombre", 150.0));
         columns.put("DNI", new ColumnInfo("dni", 80.0));
         columns.put("Teléfono", new ColumnInfo("telefono", 100.0));
+        columns.put("Correo", new ColumnInfo("correo", 180.0));
         columns.put("Dirección", new ColumnInfo("direccion", 150.0));
         columns.put("Género", new ColumnInfo("genero", 80.0));
 
@@ -62,6 +64,7 @@ public class CiudadanoController {
                     .nombre(txtNombre.getText())
                     .dni(txtDni.getText())
                     .telefono(txtTelefono.getText())
+                    .correo(txtCorreo.getText())
                     .direccion(txtDireccion.getText())
                     .genero(cbxGenero.getValue())
                     .build();
@@ -86,6 +89,7 @@ public class CiudadanoController {
         txtNombre.setText(c.getNombre());
         txtDni.setText(c.getDni());
         txtTelefono.setText(c.getTelefono());
+        txtCorreo.setText(c.getCorreo());
         txtDireccion.setText(c.getDireccion());
         cbxGenero.setValue(c.getGenero());
         btnGuardar.setText("Actualizar");
