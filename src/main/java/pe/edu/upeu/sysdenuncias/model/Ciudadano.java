@@ -1,5 +1,6 @@
 package pe.edu.upeu.sysdenuncias.model;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -39,4 +40,8 @@ public class Ciudadano {
     private String direccion;
 
     private Genero genero;
+
+    @NotBlank(message = "El correo es obligatorio")
+    @Email(message = "Ingrese un correo válido")
+    private String correo;
 }

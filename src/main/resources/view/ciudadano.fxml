@@ -23,6 +23,9 @@
         
         <Label text="Teléfono:" />
         <TextField fx:id="txtTelefono" promptText="Ingrese teléfono" />
+
+        <Label text="Correo Electrónico:" />
+        <TextField fx:id="txtCorreo" promptText="Ingrese correo" />
         
         <Label text="Dirección:" />
         <TextField fx:id="txtDireccion" promptText="Ingrese dirección" />
