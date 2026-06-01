@@ -42,7 +42,7 @@ public class DashboardController {
         ));
         colFecha.setCellValueFactory(cellData -> new SimpleStringProperty(
                 cellData.getValue().getFecha() != null 
-                        ? cellData.getValue().getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) 
+                        ? cellData.getValue().getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) 
                         : "N/A"
         ));
         colEstado.setCellValueFactory(cellData -> new SimpleStringProperty(
