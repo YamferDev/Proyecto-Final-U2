@@ -7,7 +7,7 @@
 
 /* Button Styles */
 .button {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #0f172a; /* Slate 900 */
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 5;
@@ -16,18 +16,58 @@
     -fx-cursor: hand;
 }
 .button:hover {
-    -fx-background-color: #45a049;
+    -fx-background-color: #1e293b; /* Slate 800 */
 }
 .button:pressed {
-    -fx-background-color: #3e8e41;
+    -fx-background-color: #334155; /* Slate 700 */
 }
 
-/* Secondary Button (Clear) */
+/* Botón de Guardar (Azul Institucional) */
+#btnGuardar {
+    -fx-background-color: #0284c7; /* Sky 600 */
+}
+#btnGuardar:hover {
+    -fx-background-color: #0369a1; /* Sky 700 */
+}
+#btnGuardar:pressed {
+    -fx-background-color: #075985; /* Sky 800 */
+}
+
+/* Botón Secundario (Limpiar) */
 #btnLimpiar {
-    -fx-background-color: #f44336;
+    -fx-background-color: #64748b; /* Slate 500 */
+    -fx-text-fill: white;
 }
 #btnLimpiar:hover {
-    -fx-background-color: #da190b;
+    -fx-background-color: #475569; /* Slate 600 */
+}
+#btnLimpiar:pressed {
+    -fx-background-color: #334155; /* Slate 700 */
+}
+
+/* Botones de acción en tablas */
+.button-edit {
+    -fx-background-color: #475569; /* Slate 600 */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4;
+    -fx-padding: 5 10 5 10;
+    -fx-cursor: hand;
+}
+.button-edit:hover {
+    -fx-background-color: #334155; /* Slate 700 */
+}
+
+.button-delete {
+    -fx-background-color: #e11d48; /* Rose 600 */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4;
+    -fx-padding: 5 10 5 10;
+    -fx-cursor: hand;
+}
+.button-delete:hover {
+    -fx-background-color: #be123c; /* Rose 700 */
 }
 
 /* TableView Styles */
