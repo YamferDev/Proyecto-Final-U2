@@ -50,14 +50,24 @@ public class FuncionarioRepository extends AbstractJdbcRepository<Funcionario, L
 
     @Override
     protected Funcionario mapRow(ResultSet rs) throws SQLException {
+        Cargo cargo = null;
+        String cargoStr = rs.getString("cargo");
+        if (cargoStr != null) {
+            try {
+                cargo = Cargo.valueOf(cargoStr);
+            } catch (IllegalArgumentException e) {
+                if (cargoStr.equalsIgnoreCase("GERENTE")) {
+                    cargo = Cargo.SUPERVISOR;
+                } else {
+                    cargo = Cargo.INSPECTOR;
+                }
+            }
+        }
         return Funcionario.builder()
                 .id(rs.getLong("id"))
                 .nombre(rs.getString("nombre"))
-                .cargo(
-                        rs.getString("cargo") != null
-                                ? Cargo.valueOf(rs.getString("cargo"))
-                                : null
-                )                .credenciales(rs.getString("credenciales"))
+                .cargo(cargo)
+                .credenciales(rs.getString("credenciales"))
                 .build();
     }
 }

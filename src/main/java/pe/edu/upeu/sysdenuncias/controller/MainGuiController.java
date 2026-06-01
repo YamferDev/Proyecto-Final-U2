@@ -135,14 +135,14 @@ public class MainGuiController {
             case ADMINISTRADOR -> {
                 // Acceso total
             }
-            case GERENTE, SUPERVISOR -> {
+            case SUPERVISOR -> {
                 // Puede gestionar ciudadanos y denuncias, no funcionarios ni tipos de denuncias
                 btnSidebarFuncionarios.setManaged(false);
                 btnSidebarFuncionarios.setVisible(false);
                 btnSidebarTiposDenuncia.setManaged(false);
                 btnSidebarTiposDenuncia.setVisible(false);
             }
-            case OPERADOR, INSPECTOR -> {
+            case INSPECTOR -> {
                 // No puede gestionar nada del área de mantenimiento
                 paneMantenimiento.setManaged(false);
                 paneMantenimiento.setVisible(false);
