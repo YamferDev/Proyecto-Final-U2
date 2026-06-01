@@ -8,11 +8,7 @@ import java.sql.Statement;
 import java.util.Properties;
 import java.util.Scanner;
 
-/**
- * Principio POO → Patrón Singleton:
- * Garantiza que solo exista una instancia de la conexión a la base de datos
- * en todo el ciclo de vida de la aplicación.
- */
+
 public class DatabaseConnection {
 
     private static DatabaseConnection instance;
@@ -24,13 +20,13 @@ public class DatabaseConnection {
     private boolean ddlAuto;
     private String ddlScript;
 
-    // Constructor privado (Singleton)
+    
     private DatabaseConnection() {
         loadProperties();
         try {
-            // Conexión JDBC pura (sin pool HikariCP según instrucción del docente)
+            
             connection = DriverManager.getConnection(url, user, password);
-            System.out.println("✅ Conexión a H2 Database exitosa.");
+            System.out.println("Conexión a H2 Database exitosa.");
             
             if (ddlAuto) {
                 runDdlScript();
@@ -38,7 +34,7 @@ public class DatabaseConnection {
             
             startH2Console();
         } catch (SQLException e) {
-            System.err.println("❌ Error al conectar a la base de datos: " + e.getMessage());
+            System.err.println("Error al conectar a la base de datos: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -47,9 +43,9 @@ public class DatabaseConnection {
         try {
             org.h2.tools.Server webServer = org.h2.tools.Server.createWebServer("-web", "-webAllowOthers", "-webPort", "8082");
             webServer.start();
-            System.out.println("🌐 H2 Console iniciada en: http://localhost:8082");
+            System.out.println("H2 Console iniciada en: http://localhost:8082");
         } catch (Exception e) {
-            System.out.println("⚠️ No se pudo iniciar H2 Console (tal vez ya esté activa): " + e.getMessage());
+            System.out.println("No se pudo iniciar H2 Console "+ e.getMessage());
         }
     }
 
@@ -57,7 +53,7 @@ public class DatabaseConnection {
         if (instance == null) {
             instance = new DatabaseConnection();
         } else {
-            // Verificar si la conexión se cerró inesperadamente
+            
             try {
                 if (instance.connection.isClosed()) {
                     instance = new DatabaseConnection();
@@ -92,10 +88,10 @@ public class DatabaseConnection {
     }
 
     private void runDdlScript() {
-        System.out.println("⚙️ Ejecutando script DDL: " + ddlScript);
+        System.out.println("Ejecutando script DDL: " + ddlScript);
         try (InputStream is = getClass().getClassLoader().getResourceAsStream(ddlScript)) {
             if (is == null) {
-                System.out.println("⚠️ Script DDL no encontrado en resources.");
+                System.out.println(" Script DDL no encontrado en resources.");
                 return;
             }
             
@@ -109,10 +105,10 @@ public class DatabaseConnection {
                         stmt.execute(sql);
                     }
                 }
-                System.out.println("✅ Script DDL ejecutado correctamente.");
+                System.out.println("Script DDL ejecutado correctamente.");
             }
         } catch (Exception e) {
-            System.err.println("❌ Error ejecutando DDL: " + e.getMessage());
+            System.err.println("Error ejecutando DDL: " + e.getMessage());
         }
     }
 }

@@ -10,13 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import pe.edu.upeu.sysdenuncias.enums.Genero;
 
-/**
- * Entidad Ciudadano — representa a la persona que realiza la denuncia.
- *
- * Principio POO → Encapsulamiento:
- *   Todos los atributos son private. Lombok genera automáticamente
- *   getters, setters, toString, equals y hashCode con @Data.
- */
+
 @Data
 @Builder
 @NoArgsConstructor

@@ -8,10 +8,7 @@ import pe.edu.upeu.sysdenuncias.service.impl.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Principio POO → Patrón Singleton y Factory:
- * Contenedor manual de Inyección de Dependencias (IoC).
- */
+
 public class AppContext {
 
     private static AppContext instance;

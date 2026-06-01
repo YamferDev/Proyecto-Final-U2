@@ -11,7 +11,7 @@
 
 <HBox spacing="20" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.sysdenuncias.controller.DenunciaController">
 
-    <!-- Formulario Izquierda -->
+    
     <VBox spacing="10" prefWidth="350" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #ddd; -fx-border-radius: 5;">
         <Label text="Gestión de Denuncias" styleClass="title-label" />
         
@@ -41,9 +41,13 @@
         </HBox>
     </VBox>
 
-    <!-- Tabla Derecha -->
+    
     <VBox spacing="10" HBox.hgrow="ALWAYS">
         <Label text="Registro de Incidencias" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Buscar:" />
+            <TextField fx:id="txtBuscar" promptText="Buscar por descripción, ubicación o ciudadano..." HBox.hgrow="ALWAYS" />
+        </HBox>
         <TableView fx:id="tableView" VBox.vgrow="ALWAYS" />
     </VBox>
 

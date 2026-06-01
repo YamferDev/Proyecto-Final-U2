@@ -14,13 +14,13 @@ public class SistemaDenunciasApplication extends Application {
 
     @Override
     public void init() throws Exception {
-        // Inicializa la BD y crea tablas si auto-ddl está true
+        
         DatabaseConnection.getInstance();
         
-        // Inicializa el IoC Container y dependencias
+        
         AppContext context = AppContext.getInstance();
         
-        // Carga la primera vista (Login)
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
         loader.setControllerFactory(context::getBean);
         root = loader.load();

@@ -10,7 +10,7 @@
 
 <HBox spacing="20" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.sysdenuncias.controller.FuncionarioController">
 
-    <!-- Formulario Izquierda -->
+    
     <VBox spacing="10" prefWidth="300" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #ddd; -fx-border-radius: 5;">
         <Label text="Gestión de Funcionarios" styleClass="title-label" />
         
@@ -29,7 +29,7 @@
         </HBox>
     </VBox>
 
-    <!-- Tabla Derecha -->
+    
     <VBox spacing="10" HBox.hgrow="ALWAYS">
         <Label text="Lista de Funcionarios" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
         <TableView fx:id="tableView" VBox.vgrow="ALWAYS" />

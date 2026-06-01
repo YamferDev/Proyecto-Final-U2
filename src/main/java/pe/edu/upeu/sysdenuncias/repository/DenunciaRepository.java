@@ -26,7 +26,7 @@ public class DenunciaRepository extends AbstractJdbcRepository<Denuncia, Long> {
         return "id";
     }
 
-    // Overriding findAll to use a JOIN to populate the associated objects
+    
     @Override
     public List<Denuncia> findAll() {
         String sql = "SELECT d.id AS d_id, d.descripcion, d.fecha, d.ubicacion, d.estado, " +

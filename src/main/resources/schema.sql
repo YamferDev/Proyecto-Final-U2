@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS denuncia (
     FOREIGN KEY (funcionario_id) REFERENCES funcionario(id)
 );
 
--- Datos semilla para Login
+
 MERGE INTO funcionario (id, nombre, cargo, credenciales)
 KEY(id) VALUES (1, 'admin', 'Administrador', 'admin');
 

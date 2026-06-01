@@ -6,17 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Entidad Funcionario — representa al empleado de la institución
- * encargado de atender y gestionar las denuncias ciudadanas.
- *
- * Principio POO → Encapsulamiento:
- *   Atributos private con acceso controlado vía Lombok (@Data).
- *
- * También actúa como entidad de autenticación:
- *   El campo 'credenciales' almacena la contraseña del funcionario
- *   para el módulo de login del sistema.
- */
+
 @Data
 @Builder
 @NoArgsConstructor

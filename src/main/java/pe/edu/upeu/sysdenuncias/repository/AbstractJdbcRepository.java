@@ -7,11 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Principio POO → Patrón Template Method:
- * Define el esqueleto del CRUD y transacciones (save, update),
- * y delega las partes específicas (insert, updateRow) a las subclases.
- */
+
 public abstract class AbstractJdbcRepository<T, ID> extends SqlHelper<T> implements ICrudGenericoRepository<T, ID> {
 
     protected abstract String getTableName();

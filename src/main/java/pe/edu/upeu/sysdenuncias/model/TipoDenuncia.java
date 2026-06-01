@@ -6,9 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * Entidad TipoDenuncia — catálogo de tipos de incidentes (robo, accidente, etc.).
- */
+
 @Data
 @Builder
 @NoArgsConstructor

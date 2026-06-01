@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Helper base para operaciones JDBC.
- */
+
 public abstract class SqlHelper<T> {
 
     protected Connection getConnection() {
@@ -93,8 +91,8 @@ public abstract class SqlHelper<T> {
     protected int executeUpdateStandalone(String sql, Object... params) {
         try {
             Connection conn = getConnection();
-            // Since we are using a single connection without pool, we might want to temporarily set auto-commit false
-            // but for simplicity of this standalone execution we just run it.
+            
+            
             PreparedStatement ps = conn.prepareStatement(sql);
             setParams(ps, params);
             int rows = ps.executeUpdate();

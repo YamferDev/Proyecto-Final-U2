@@ -4,6 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import pe.edu.upeu.sysdenuncias.components.ColumnInfo;
 import pe.edu.upeu.sysdenuncias.components.TableViewHelper;
 import pe.edu.upeu.sysdenuncias.components.Toast;
@@ -23,6 +25,7 @@ public class CiudadanoController {
     @FXML private TextField txtTelefono;
     @FXML private TextField txtCorreo;
     @FXML private TextField txtDireccion;
+    @FXML private TextField txtBuscar;
     @FXML private ComboBox<Genero> cbxGenero;
     
     @FXML private TableView<Ciudadano> tableView;
@@ -54,7 +57,22 @@ public class CiudadanoController {
 
     private void listar() {
         listarCiudadanos = FXCollections.observableArrayList(ciudadanoService.findAll());
-        tableView.setItems(listarCiudadanos);
+        
+        FilteredList<Ciudadano> filteredData = new FilteredList<>(listarCiudadanos, p -> true);
+        txtBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(c -> {
+                if (newValue == null || newValue.isEmpty() || newValue.isBlank()) {
+                    return true;
+                }
+                String filter = newValue.toLowerCase().trim();
+                return c.getNombre().toLowerCase().contains(filter) ||
+                       c.getDni().contains(filter) ||
+                       (c.getCorreo() != null && c.getCorreo().toLowerCase().contains(filter));
+            });
+        });
+        SortedList<Ciudadano> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tableView.comparatorProperty());
+        tableView.setItems(sortedData);
     }
 
     @FXML
@@ -108,6 +126,7 @@ public class CiudadanoController {
         txtTelefono.clear();
         txtCorreo.clear();
         txtDireccion.clear();
+        txtBuscar.clear();
         cbxGenero.setValue(null);
         idCiudadanoEdit = 0L;
         btnGuardar.setText("Guardar");
