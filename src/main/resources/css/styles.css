@@ -69,3 +69,73 @@
     -fx-font-weight: bold;
     -fx-text-fill: #1976D2;
 }
+/* Fondo general con degradado como tu imagen */
+.login-root {
+    -fx-background-color: linear-gradient(to bottom right, #50a3a2, #214e61);
+}
+
+/* Tarjeta central semitransparente (Efecto Cristal / Glassmorphism) */
+.login-card {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(255, 255, 255, 0.25);
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-padding: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 15, 0, 0, 8);
+}
+
+/* Título estilizado */
+.login-title {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+/* Cajas de texto modernas (Línea blanca abajo en vez de recuadro) */
+.text-field-modern {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.6) transparent;
+    -fx-border-width: 1.5px;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.4);
+    -fx-font-size: 13px;
+    -fx-padding: 5 0 5 0;
+}
+
+.text-field-modern:focused {
+    -fx-border-color: transparent transparent #ffffff transparent;
+    -fx-border-width: 2px;
+}
+
+/* Botón de Ingresar Azul Oscuro / Elegante */
+.button-login {
+    -fx-background-color: #002d40;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 4px;
+    -fx-padding: 10px;
+    -fx-cursor: hand;
+}
+
+.button-login:hover {
+    -fx-background-color: #00415a;
+}
+
+/* Botón Salir Sutil */
+.button-exit {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.button-exit:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: white;
+}
