@@ -8,11 +8,14 @@ import pe.edu.upeu.sysdenuncias.model.Funcionario;
 import pe.edu.upeu.sysdenuncias.model.TipoDenuncia;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Map;
+import java.util.HashMap;
 
 public class DenunciaRepository extends AbstractJdbcRepository<Denuncia, Long> {
 
@@ -122,5 +125,40 @@ public class DenunciaRepository extends AbstractJdbcRepository<Denuncia, Long> {
                 .tipoDenuncia(tipoDenuncia)
                 .funcionario(funcionario)
                 .build();
+    }
+
+    public Map<String, Integer> getCountByTipo() {
+        String sql = "SELECT t.nombre AS tipo, COUNT(d.id) AS cantidad " +
+                     "FROM denuncia d " +
+                     "JOIN tipo_denuncia t ON d.tipo_id = t.id " +
+                     "GROUP BY t.nombre";
+        Map<String, Integer> map = new HashMap<>();
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                map.put(rs.getString("tipo"), rs.getInt("cantidad"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al obtener estadísticas de denuncias por tipo: " + e.getMessage(), e);
+        }
+        return map;
+    }
+
+    public Map<String, Integer> getCountByEstado() {
+        String sql = "SELECT estado, COUNT(id) AS cantidad " +
+                     "FROM denuncia " +
+                     "GROUP BY estado";
+        Map<String, Integer> map = new HashMap<>();
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                map.put(rs.getString("estado"), rs.getInt("cantidad"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al obtener estadísticas de denuncias por estado: " + e.getMessage(), e);
+        }
+        return map;
     }
 }

@@ -59,6 +59,7 @@ public class AppContext {
                 getBean(ITipoDenunciaService.class),
                 getBean(IFuncionarioService.class)
         ));
+        registrar(DashboardController.class, new DashboardController(getBean(IDenunciaService.class)));
     }
 
     private void registrar(Class<?> tipo, Object bean) {

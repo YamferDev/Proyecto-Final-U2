@@ -77,4 +77,14 @@ public class DenunciaServiceImp extends CrudGenericoServiceImp<Denuncia, Long> i
             System.out.println("Error al generar el reporte: " + e.getMessage());
         }
     }
+
+    @Override
+    public Map<String, Integer> obtenerEstadisticasPorTipo() {
+        return repo.getCountByTipo();
+    }
+
+    @Override
+    public Map<String, Integer> obtenerEstadisticasPorEstado() {
+        return repo.getCountByEstado();
+    }
 }

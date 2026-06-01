@@ -20,6 +20,7 @@
                     <Menu text="Operaciones">
                         <items>
                             <MenuItem fx:id="miDenuncias" onAction="#menuAction" text="Gestión de Denuncias" />
+                            <MenuItem fx:id="miDashboard" onAction="#menuAction" text="Dashboard Estadístico" />
                         </items>
                     </Menu>
 
