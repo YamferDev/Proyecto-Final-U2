@@ -5,10 +5,11 @@ import pe.edu.upeu.sysdenuncias.model.Funcionario;
 import pe.edu.upeu.sysdenuncias.repository.FuncionarioRepository;
 
 public class App {
+
     public static void main(String[] args) {
+
         System.out.println("Iniciando Sistema de Gestión de Denuncias...");
 
-        // 1. Primero forzamos la creación del usuario en la base de datos
         try {
             FuncionarioRepository funcRepo = new FuncionarioRepository();
 
@@ -22,11 +23,17 @@ public class App {
 
                 funcRepo.save(admin);
 
-                System.out.println(" Usuario Admin creado.");
+                System.out.println("✅ Usuario Admin creado.");
             }
 
         } catch (Exception e) {
             System.out.println("ℹ Nota sobre Admin: " + e.getMessage());
         }
+
+        // INICIAR JAVAFX
+        SistemaDenunciasApplication.launch(
+                SistemaDenunciasApplication.class,
+                args
+        );
     }
 }
