@@ -5,5 +5,4 @@ public enum Cargo {
     SUPERVISOR,
     OPERADOR,
     INSPECTOR
-
 }

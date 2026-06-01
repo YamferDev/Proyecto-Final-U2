@@ -36,19 +36,20 @@
         </VBox>
     </top>
     <center>
-        <VBox spacing="10">
+        <VBox spacing="10" fillWidth="true">
 
-            <Label style="-fx-font-size:24px; -fx-font-weight:bold;" text="SISTEMA DE DENUNCIAS CIUDADANAS">
-            <VBox.margin>
-               <Insets left="5.0" />
-            </VBox.margin></Label>
+            <Label style="-fx-font-size:24px; -fx-font-weight:bold;" text="SISTEMA DE DENUNCIAS CIUDADANAS" maxWidth="Infinity">
+                <VBox.margin>
+                    <Insets left="15.0" top="10.0" />
+                </VBox.margin>
+            </Label>
 
-            <Label text="Bienvenido al sistema">
-            <VBox.margin>
-               <Insets bottom="5.0" left="5.0" />
-            </VBox.margin></Label>
+            <Label text="Bienvenido al sistema" maxWidth="Infinity">
+                <VBox.margin>
+                    <Insets bottom="5.0" left="15.0" />
+                </VBox.margin>
+            </Label>
 
-            <TabPane fx:id="tabPaneFx" VBox.vgrow="ALWAYS" />
-        </VBox>
+            <TabPane fx:id="tabPaneFx" VBox.vgrow="ALWAYS" maxWidth="Infinity" />        </VBox>
     </center>
 </BorderPane>

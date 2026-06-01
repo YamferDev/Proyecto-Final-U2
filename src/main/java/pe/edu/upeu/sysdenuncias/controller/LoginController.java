@@ -55,9 +55,7 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/maingui.fxml"));
             loader.setControllerFactory(ctx::getBean);
             Parent mainRoot = loader.load();
-            
-            Screen screen = Screen.getPrimary();
-            Rectangle2D bounds = screen.getBounds();
+
             Scene mainScene = new Scene(mainRoot, 1100, 650);;
 
             String cssPath = getClass().getResource("/css/styles.css").toExternalForm();
@@ -67,6 +65,7 @@ public class LoginController {
             stage.setScene(mainScene);
             stage.setTitle("Sistema de Denuncias Ciudadanas");
             stage.setResizable(true);
+            stage.setMaximized(true);
 
             StageManager.setPrimaryStage(stage);
             stage.show();
