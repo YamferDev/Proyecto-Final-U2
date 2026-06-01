@@ -61,11 +61,12 @@ public class TableViewHelper<T> {
                     private final Button btnDelete = new Button("Elim.");
 
                     {
+                        btnUpdate.getStyleClass().add("button-edit");
                         btnUpdate.setOnAction(event -> {
                             T data = getTableView().getItems().get(getIndex());
                             updateAction.accept(data);
                         });
-                        btnDelete.setStyle("-fx-background-color: #ff4d4d; -fx-text-fill: white;");
+                        btnDelete.getStyleClass().add("button-delete");
                         btnDelete.setOnAction(event -> {
                             T data = getTableView().getItems().get(getIndex());
                             deleteAction.accept(data);
