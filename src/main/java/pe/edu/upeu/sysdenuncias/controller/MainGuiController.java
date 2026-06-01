@@ -29,7 +29,6 @@ public class MainGuiController {
             case "miFuncionarios" -> abrirTabConFXML("/view/funcionario.fxml", "Gestión de Funcionarios");
             case "miTiposDenuncia" -> abrirTabConFXML("/view/tipodenuncia.fxml", "Tipos de Denuncia");
             case "miDenuncias" -> abrirTabConFXML("/view/denuncia.fxml", "Gestión de Denuncias");
-            case "miDashboard" -> abrirTabConFXML("/view/dashboard.fxml", "Dashboard Estadístico");
             case "miSalir" -> javafx.application.Platform.exit();
         }
     }

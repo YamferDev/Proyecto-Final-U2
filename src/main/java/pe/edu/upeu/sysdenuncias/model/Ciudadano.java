@@ -27,6 +27,9 @@ public class Ciudadano {
     @Pattern(regexp = "\\d{8}", message = "El DNI debe contener solo dígitos")
     private String dni;
 
+
+    @Size(min = 9, max = 9, message = "El numero debe tener exactamente 9 numeros")
+    @Pattern(regexp = "\\d{8}", message = "El DNI debe contener solo dígitos")
     @NotBlank(message = "El teléfono es obligatorio")
     private String telefono;
 

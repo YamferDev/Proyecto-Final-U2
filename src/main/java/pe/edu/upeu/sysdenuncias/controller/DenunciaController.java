@@ -6,8 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import pe.edu.upeu.sysdenuncias.components.ColumnInfo;
 import pe.edu.upeu.sysdenuncias.components.TableViewHelper;
 import pe.edu.upeu.sysdenuncias.components.Toast;
@@ -36,7 +34,6 @@ public class DenunciaController {
 
     @FXML private TextArea txtDescripcion;
     @FXML private TextField txtUbicacion;
-    @FXML private TextField txtBuscar;
     @FXML private ComboBox<Ciudadano> cbxCiudadano;
     @FXML private ComboBox<TipoDenuncia> cbxTipoDenuncia;
     @FXML private ComboBox<EstadoDenuncia> cbxEstado;
@@ -60,7 +57,7 @@ public class DenunciaController {
         cbxCiudadano.setItems(FXCollections.observableArrayList(ciudadanoService.findAll()));
         cbxTipoDenuncia.setItems(FXCollections.observableArrayList(tipoDenunciaService.findAll()));
         
-        
+        // Cargar nombres correctos en ComboBox
         cbxCiudadano.setCellFactory(new Callback<>() {
             @Override
             public ListCell<Ciudadano> call(ListView<Ciudadano> param) {
@@ -136,24 +133,7 @@ public class DenunciaController {
 
     private void listar() {
         listarDenuncias = FXCollections.observableArrayList(denunciaService.findAll());
-        
-        FilteredList<Denuncia> filteredData = new FilteredList<>(listarDenuncias, p -> true);
-        txtBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(d -> {
-                if (newValue == null || newValue.isEmpty() || newValue.isBlank()) {
-                    return true;
-                }
-                String filter = newValue.toLowerCase().trim();
-                return d.getDescripcion().toLowerCase().contains(filter) ||
-                       d.getUbicacion().toLowerCase().contains(filter) ||
-                       (d.getCiudadano() != null && d.getCiudadano().getNombre().toLowerCase().contains(filter)) ||
-                       (d.getCiudadano() != null && d.getCiudadano().getDni().contains(filter)) ||
-                       d.getEstado().name().toLowerCase().contains(filter);
-            });
-        });
-        SortedList<Denuncia> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(tableView.comparatorProperty());
-        tableView.setItems(sortedData);
+        tableView.setItems(listarDenuncias);
     }
 
     @FXML
@@ -174,7 +154,7 @@ public class DenunciaController {
 
             if (idDenunciaEdit != 0L) {
                 denuncia.setId(idDenunciaEdit);
-                
+                // Aquí el Service interceptará si el estado es NOTIFICADO e imprimirá en consola
                 denunciaService.update(idDenunciaEdit, denuncia);
                 Toast.showToast(null, "Actualizado correctamente", 2000, 500, 300);
             } else {
@@ -193,7 +173,7 @@ public class DenunciaController {
         txtDescripcion.setText(d.getDescripcion());
         txtUbicacion.setText(d.getUbicacion());
         txtObservacion.setText(d.getObservacion());
-        
+        // Find exact objects to select in combo
         cbxEstado.setValue(d.getEstado());
         cbxCiudadano.getItems().stream().filter(c -> c.getId().equals(d.getCiudadano().getId())).findFirst().ifPresent(cbxCiudadano::setValue);
         cbxTipoDenuncia.getItems().stream().filter(t -> t.getId().equals(d.getTipoDenuncia().getId())).findFirst().ifPresent(cbxTipoDenuncia::setValue);
@@ -212,7 +192,6 @@ public class DenunciaController {
         txtDescripcion.clear();
         txtUbicacion.clear();
         txtObservacion.clear();
-        txtBuscar.clear();
         cbxCiudadano.setValue(null);
         cbxTipoDenuncia.setValue(null);
         cbxEstado.setValue(EstadoDenuncia.PENDIENTE);
