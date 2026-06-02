@@ -108,12 +108,23 @@ public class DenunciaRepository extends AbstractJdbcRepository<Denuncia, Long> {
         Funcionario funcionario = null;
         long fId = rs.getLong("f_id");
         if (!rs.wasNull()) {
+            Cargo cargo = null;
+            String cargoStr = rs.getString("f_cargo");
+            if (cargoStr != null) {
+                try {
+                    cargo = Cargo.valueOf(cargoStr);
+                } catch (IllegalArgumentException e) {
+                    if (cargoStr.equalsIgnoreCase("GERENTE")) {
+                        cargo = Cargo.SUPERVISOR;
+                    } else {
+                        cargo = Cargo.INSPECTOR;
+                    }
+                }
+            }
             funcionario = Funcionario.builder()
                     .id(fId)
                     .nombre(rs.getString("f_nombre"))
-                    .cargo(rs.getString("f_cargo") != null
-                            ? Cargo.valueOf(rs.getString("f_cargo"))
-                            : null)
+                    .cargo(cargo)
                     .build();
         }
 
