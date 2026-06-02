@@ -28,8 +28,8 @@ public class Ciudadano {
     private String dni;
 
 
-    @Size(min = 9, max = 9, message = "El numero debe tener exactamente 9 numeros")
-    @Pattern(regexp = "\\d{8}", message = "El DNI debe contener solo dígitos")
+    @Size(min = 9, max = 9, message = "El número debe tener exactamente 9 dígitos")
+    @Pattern(regexp = "\\d{9}", message = "El teléfono debe contener solo dígitos") // <--- Cambia a 9 aquí
     @NotBlank(message = "El teléfono es obligatorio")
     private String telefono;
 
@@ -39,6 +39,6 @@ public class Ciudadano {
     private Genero genero;
 
     @NotBlank(message = "El correo es obligatorio")
-    @Email(message = "Ingrese un correo válido")
+    @Email(message = "Ingrese un correo electrónico válido (ej: usuario@dominio.com)")
     private String correo;
 }

@@ -12,6 +12,11 @@ import pe.edu.upeu.sysdenuncias.components.Toast;
 import pe.edu.upeu.sysdenuncias.enums.Genero;
 import pe.edu.upeu.sysdenuncias.model.Ciudadano;
 import pe.edu.upeu.sysdenuncias.service.ICiudadanoService;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
+import jakarta.validation.ConstraintViolation;
+import java.util.Set;
 
 import java.util.LinkedHashMap;
 
@@ -86,6 +91,16 @@ public class CiudadanoController {
                     .direccion(txtDireccion.getText())
                     .genero(cbxGenero.getValue())
                     .build();
+
+            ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+            Validator validator = factory.getValidator();
+            Set<ConstraintViolation<Ciudadano>> violations = validator.validate(ciudadano);
+
+            if (!violations.isEmpty()) {
+                String msg = violations.iterator().next().getMessage();
+                Toast.showToast(null, "Error: " + msg, 3000, 500, 300);
+                return;
+            }
 
             if (idCiudadanoEdit != 0L) {
                 ciudadano.setId(idCiudadanoEdit);

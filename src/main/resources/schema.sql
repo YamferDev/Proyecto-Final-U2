@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS ciudadano (
     nombre VARCHAR(100) NOT NULL,
     dni VARCHAR(8) NOT NULL,
     telefono VARCHAR(15) NOT NULL,
+    correo VARCHAR(100) NOT NULL,
     direccion VARCHAR(200) NOT NULL,
     genero VARCHAR(15)
 );
