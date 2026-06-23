@@ -5,7 +5,7 @@ import pe.edu.upeu.sysdenuncias.model.Evidencia;
 import pe.edu.upeu.sysdenuncias.repository.EvidenciaRepository;
 import pe.edu.upeu.sysdenuncias.repository.ICrudGenericoRepository;
 import pe.edu.upeu.sysdenuncias.service.IEvidenciaService;
-
+import pe.edu.upeu.sysdenuncias.model.Evidencia;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

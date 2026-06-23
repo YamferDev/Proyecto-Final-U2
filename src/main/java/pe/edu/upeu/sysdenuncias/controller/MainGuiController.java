@@ -20,7 +20,6 @@ public class MainGuiController {
 
     @FXML private TabPane tabPaneFx;
 
-    // Elementos de la barra lateral
     @FXML private Label lblSidebarUsuario;
     @FXML private Label lblSidebarCargo;
     @FXML private TitledPane paneMantenimiento;
@@ -30,8 +29,6 @@ public class MainGuiController {
     @FXML private Button btnSidebarCiudadanos;
     @FXML private Button btnSidebarFuncionarios;
     @FXML private Button btnSidebarTiposDenuncia;
-    @FXML private Button btnSidebarDenuncias;
-    @FXML private Button btnSidebarSalir;
 
     @FXML
     public void sidebarAction(ActionEvent event) {
@@ -112,16 +109,13 @@ public class MainGuiController {
             lblSidebarUsuario.setText(func.getNombre());
             lblSidebarCargo.setText(func.getCargo().name());
 
-            // Configurar visibilidad según el Cargo
             configurarPrivilegios(func.getCargo());
         }
 
-        // Cargar por defecto el dashboard interactivo al iniciar
         abrirTabConFXML("/view/dashboard.fxml", "Dashboard Interactivo");
     }
 
     private void configurarPrivilegios(Cargo cargo) {
-        // Reset defaults
         btnSidebarCiudadanos.setManaged(true);
         btnSidebarCiudadanos.setVisible(true);
         btnSidebarFuncionarios.setManaged(true);
@@ -133,17 +127,14 @@ public class MainGuiController {
 
         switch (cargo) {
             case ADMINISTRADOR -> {
-                // Acceso total
             }
             case SUPERVISOR -> {
-                // Puede gestionar ciudadanos y denuncias, no funcionarios ni tipos de denuncias
                 btnSidebarFuncionarios.setManaged(false);
                 btnSidebarFuncionarios.setVisible(false);
                 btnSidebarTiposDenuncia.setManaged(false);
                 btnSidebarTiposDenuncia.setVisible(false);
             }
             case INSPECTOR -> {
-                // No puede gestionar nada del área de mantenimiento
                 paneMantenimiento.setManaged(false);
                 paneMantenimiento.setVisible(false);
             }

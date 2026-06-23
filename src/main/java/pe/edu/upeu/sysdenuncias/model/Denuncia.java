@@ -10,6 +10,7 @@ import pe.edu.upeu.sysdenuncias.enums.EstadoDenuncia;
 import java.time.LocalDate;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Data
@@ -21,7 +22,7 @@ public class Denuncia {
 
 
     private Long id;
-
+    private List<Evidencia> evidencias; // <--- Revisa que el nombre sea exactamente este
     @NotBlank(message = "La descripción de la denuncia es obligatoria")
     private String descripcion;
 
