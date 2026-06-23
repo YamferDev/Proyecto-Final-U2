@@ -1,2 +1,6 @@
 "data/*.mv.db" 
-"data/*.trace.db" 
+"data/*.trace.db"
+/target/
+/uploads/
+*.db
+.idea/
